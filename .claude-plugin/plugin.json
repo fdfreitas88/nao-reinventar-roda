@@ -1,0 +1,10 @@
+{
+  "name": "nao-reinventar-roda",
+  "version": "0.1.0",
+  "description": "Antes de construir: pesquisa demanda, produtos existentes e reuso de código, com fonte e data em cada afirmação.",
+  "author": {
+    "name": "Felipe Freitas"
+  },
+  "license": "MIT",
+  "keywords": ["pesquisa", "validacao-de-ideia", "produtos-existentes", "reuso"]
+}

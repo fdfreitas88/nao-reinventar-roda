@@ -1,0 +1,14 @@
+{
+  "name": "nao-reinventar-roda",
+  "description": "Marketplace local do plugin nao-reinventar-roda.",
+  "owner": {
+    "name": "Felipe Freitas"
+  },
+  "plugins": [
+    {
+      "name": "nao-reinventar-roda",
+      "source": "./",
+      "description": "Antes de construir: pesquisa demanda, produtos existentes e reuso de código, com fonte e data em cada afirmação."
+    }
+  ]
+}
