@@ -25,6 +25,7 @@ A trava de cada fase lê o cabeçalho dos arquivos de entrada, não só a exist�
 | `1-demanda` | nada |
 | `2-existentes` | `00-ideia.md` confirmado e `01` com situação `completa` ou `parcial` |
 | `3-veredito` | `00`, `01` e `02` |
+| `relatorio` | `00` e `01`; sem `03`, gera em modo prévia |
 | `reuso-de-codigo` | nada |
 
 Quando a entrada falta, pare e escreva: o caminho absoluto procurado, o arquivo que faltou e o comando exato a rodar, com o nome da ideia. Não improvise a entrada.

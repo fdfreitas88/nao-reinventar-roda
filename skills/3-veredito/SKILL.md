@@ -29,6 +29,7 @@ Ideia: $ARGUMENTS
 6. **Encerrar.** Responda com: caminho, o resultado em uma linha, o caso mais forte contra em duas linhas, o que incluir (obrigatório e diferencial) e o que não foi avaliado.
 
    - Se o resultado for "inconclusivo", mostre o que falta e o comando para refazer a fase correspondente.
+   - Para a one page executiva, o comando é `/nao-reinventar-roda:relatorio <nome-da-pasta>`.
    - Se o usuário seguir para a implementação, o comando é `/nao-reinventar-roda:reuso-de-codigo <necessidade>`.
 
 ## Não faça

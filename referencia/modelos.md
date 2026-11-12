@@ -8,6 +8,7 @@ Copie a estrutura. Não deixe seção sem conteúdo: escreva "nenhum encontrado"
 ---
 ideia: <nome-da-pasta>
 fase: <00 | 01 | 02 | 03 | 04>
+(o relatório 05 é HTML e não leva este cabeçalho; os dados dele vão no rodapé)
 data: <AAAA-MM-DD>
 situacao: <completa | parcial | bloqueada>
 motivo_parada: <saturação | teto | fontes bloqueadas | pedido do usuário>
@@ -158,3 +159,21 @@ Arquivo de acréscimo. Uma entrada por necessidade.
 
 | Id | URL | Acesso | Condição | Trecho literal |
 ```
+
+## 05-relatorio.html
+
+One page executiva em HTML, gerada pela skill `relatorio` a partir do modelo `referencia/relatorio-modelo.html`. Não tem cabeçalho YAML: pastas, datas, modo (final ou prévia), situação das fases e a conta da temperatura vão no rodapé.
+
+Seções, nesta ordem:
+
+1. Título com o veredito em uma frase.
+2. A ideia (de `00`) e a pesquisa realizada (totais da Cobertura de `01` e `02`).
+3. Veredito com o termômetro: rótulo da faixa, medidor semicircular com uma agulha por ideia, nota de cada ideia.
+4. Três motivos.
+5. Mercado: quem já faz (até 10 linhas, preço e licença separados).
+6. Casos do setor (linha do tempo) e quem usa e como resolve hoje.
+7. Recomendação em três colunas.
+8. Rodapé com fontes, modo, situação, conta da temperatura e o que não foi avaliado.
+
+Cada linha factual leva o identificador de origem (`02:F10`, `01:N5`) em letra pequena.
+
