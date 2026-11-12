@@ -177,3 +177,32 @@ Seções, nesta ordem:
 
 Cada linha factual leva o identificador de origem (`02:F10`, `01:N5`) em letra pequena.
 
+## 05-relatorio.json
+
+Conteúdo da one page, fonte única do HTML e do PDF (`scripts/relatorio_pdf.py`). Texto em português; aceita `<b>` e `<i>`; escape `&`, `<` e `>` do resto.
+
+```json
+{
+  "titulo_curto": "Termômetro SAST",
+  "meta": "Avaliação de oportunidade · AppSec · 12 nov 2026 · Uso interno",
+  "previa": false,
+  "titulo": "Ferramenta X: não é viável como produto",
+  "ideia": "até 60 palavras, de 00",
+  "pesquisa": "totais da Cobertura de 01 e 02",
+  "veredito": "Não investir como produto",
+  "cor_veredito": "#c23b28",
+  "agulhas": [{"letra": "A", "t": 34, "principal": true}],
+  "nota_medidor": "<b>A</b> nome: 34/100. Frase sobre o limite de 50.",
+  "motivos_titulo": "Por que não é viável",
+  "motivos": [{"rotulo": "Motivo 1 · Já existe", "titulo": "...", "texto": "...", "ref": "03 · 02:F18"}],
+  "mercado": [{"empresa": "...", "entrega": "...", "modelo": "preço ou licença", "ref": "02:F10"}],
+  "casos": [{"ano": "2025", "texto": "<b>Nome</b> comprado por ...", "ref": "01:N5"}],
+  "quem_usa": [{"quem": "Organização", "texto": "como resolve", "ref": "01:D10"}],
+  "leitura_casos": "uma frase",
+  "recomendacao": [{"titulo": "Não fazer", "texto": "..."}],
+  "rodape": "fontes, modo, situação, conta da temperatura, o que não foi avaliado"
+}
+```
+
+Limites: 3 motivos, até 10 linhas de mercado, 3 colunas de recomendação. `cor_veredito` é `#2f8f5b` quando a faixa é 50 ou mais.
+

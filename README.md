@@ -9,7 +9,7 @@ Plugin do Claude Code para pesquisar antes de construir. Cada fase grava um arqu
 | `/nao-reinventar-roda:1-demanda <ideia em uma frase>` | Registra a ideia e procura ideias parecidas, sinais de demanda e sinais contrários | `00-ideia.md`, `01-ideias-e-demanda.md` |
 | `/nao-reinventar-roda:2-existentes <pasta>` | Levanta produtos existentes e em andamento; lê fabricante, documentação e datasheet da lista curta | `02-produtos-existentes.md` |
 | `/nao-reinventar-roda:3-veredito <pasta>` | Juiz de contexto limpo entrega resultado, prós e contras e matriz do que incluir | `03-veredito.md` |
-| `/nao-reinventar-roda:relatorio <pasta> [<pasta> ...]` | Gera uma one page executiva (C-level) em HTML com ideia, veredito, termômetro de espaço de mercado, motivos, quem já faz, casos do setor, quem usa e recomendação. Não busca nada novo | `05-relatorio.html` |
+| `/nao-reinventar-roda:relatorio <pasta> [<pasta> ...]` | Gera uma one page executiva (C-level) em HTML e PDF com ideia, veredito, termômetro de espaço de mercado, motivos, quem já faz, casos do setor, quem usa e recomendação. Não busca nada novo | `05-relatorio.html`, `.pdf`, `.json` |
 | `/nao-reinventar-roda:reuso-de-codigo <necessidade>` | Procura biblioteca, API ou serviço pronto antes de escrever código | `04-reuso-de-codigo.md` |
 
 Nenhuma skill dispara sozinha. As fases 2 e 3 param quando falta o arquivo da fase anterior e mostram o comando a rodar.
@@ -38,6 +38,8 @@ A fase 1 mostra o registro da ideia e espera a confirmação antes de buscar. A 
 
 O relatório transforma as fases numa página para a diretoria. A temperatura de 0 a 100 mede quanto espaço livre sobra para a ideia como produto e sai de uma conta fixa sobre a matriz da fase 3, mostrada no rodapé. Pode ser gerado depois da fase 1, marcado como prévia, e aceita até três pastas para comparar versões da mesma ideia.
 
+A fase 2 também oferece o relatório como opção 4, na escolha da lista curta e no encerramento. O PDF (A4, uma página) é gerado por `scripts/relatorio_pdf.py` e precisa de `python3 -m pip install reportlab`.
+
 ## Estrutura
 
 - `skills/`: uma pasta por fase.
@@ -46,6 +48,7 @@ O relatório transforma as fases numa página para a diretoria. A temperatura de
 - `referencia/regras.md`: regras comuns a todas as fases.
 - `referencia/modelos.md`: modelos dos arquivos gerados.
 - `referencia/relatorio-modelo.html`: modelo HTML da one page executiva.
+- `scripts/relatorio_pdf.py`: gera o PDF da one page a partir de `05-relatorio.json`.
 
 ## Limites
 

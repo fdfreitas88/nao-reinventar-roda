@@ -1,6 +1,6 @@
 ---
 name: relatorio
-description: Relatório executivo do nao-reinventar-roda. Lê os arquivos de uma ou mais ideias e gera uma one page em HTML para C-level, com a ideia, o veredito, o termômetro de espaço de mercado, os motivos, quem já faz, os casos do setor, quem usa e a recomendação. Não busca nada novo. Use depois da fase 3, ou depois da fase 1 como prévia.
+description: Relatório executivo do nao-reinventar-roda. Lê os arquivos de uma ou mais ideias e gera uma one page em HTML e PDF para C-level, com a ideia, o veredito, o termômetro de espaço de mercado, os motivos, quem já faz, os casos do setor, quem usa e a recomendação. Não busca nada novo. Use depois da fase 3, ou depois da fase 1 como prévia.
 argument-hint: <nome-da-pasta> [<outra-pasta> ...]
 disable-model-invocation: true
 ---
@@ -17,10 +17,18 @@ Pastas: $ARGUMENTS
 2. **Modo.** Se todas as pastas têm `03-veredito.md`, o modo é **final**. Se alguma não tem, o modo é **prévia**: avise o usuário uma vez e marque a página com o selo "Prévia". Avise também sobre entrada `parcial` ou com mais de 30 dias.
 3. **Juntar o conteúdo.** Leia `00`, `01`, `02` e `03` de cada pasta e preencha as seções da tabela abaixo. Não busque na web. Não acrescente fato que não esteja nesses arquivos. Fato da memória não entra.
 4. **Calcular a temperatura** de cada ideia pela regra de "Temperatura" abaixo. Mostre no rodapé a conta usada.
-5. **Escrever a página** a partir do modelo HTML. Troque cada `{{marcador}}` e apague os comentários de instrução. Mantenha os tokens de cor, a grade, os dois temas e o rodapé.
-6. **Gravar** em `./pesquisa-ideia/<primeira-pasta>/05-relatorio.html`. Se já existir, renomeie o antigo para `05-relatorio.<AAAA-MM-DD>.html` antes.
-7. **Publicar, se der.** Se a sessão tiver ferramenta de publicar página (por exemplo, Artifact), publique o arquivo gravado e devolva o link. Sem ela, devolva só o caminho.
-8. **Encerrar.** Responda com: caminho, link (se houver), modo, a temperatura de cada ideia com a faixa, os três motivos em uma linha cada, e o que ficou de fora da página por falta de dado.
+5. **Escrever o conteúdo** em `05-relatorio.json`, no formato da seção `05-relatorio.json` de `modelos.md`. É a fonte única do HTML e do PDF.
+6. **Escrever a página** a partir do modelo HTML, com o mesmo conteúdo do JSON. Troque cada `{{marcador}}` e apague os comentários de instrução. Mantenha os tokens de cor, a grade, os dois temas e o rodapé.
+7. **Gravar** `05-relatorio.json` e `05-relatorio.html` em `./pesquisa-ideia/<primeira-pasta>/`. Se já existirem, renomeie os antigos para `05-relatorio.<AAAA-MM-DD>.<ext>` antes.
+8. **Gerar o PDF** (A4, uma página):
+
+   ```sh
+   python3 "${CLAUDE_PLUGIN_ROOT}/scripts/relatorio_pdf.py" <pasta>/05-relatorio.json <pasta>/05-relatorio.pdf --png "$TMPDIR/05-previa.png"
+   ```
+
+   Abra a prévia PNG uma vez: confira que coube em uma página e que os rótulos do medidor não se sobrepõem; se não, encurte o texto no JSON e rode de novo. Sem `reportlab`, mostre `python3 -m pip install reportlab` ao usuário e entregue só o HTML.
+9. **Publicar, se der.** Se a sessão tiver ferramenta de publicar página (por exemplo, Artifact), publique o arquivo gravado e devolva o link. Sem ela, devolva só o caminho.
+10. **Encerrar.** Responda com: caminhos do HTML e do PDF, link (se houver), modo, a temperatura de cada ideia com a faixa, os três motivos em uma linha cada, e o que ficou de fora da página por falta de dado.
 
 ## Conteúdo da página
 
@@ -73,6 +81,8 @@ Faixas e rótulos:
 | 65 a 100 | Construir |
 
 ## Medidor
+
+O script de PDF desenha o medidor sozinho a partir de `agulhas` no JSON. As contas abaixo são para o HTML.
 
 Semicírculo com centro (120, 120) e raio 100 no `viewBox="0 0 240 140"`. Para uma temperatura `t`:
 

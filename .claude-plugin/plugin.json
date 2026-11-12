@@ -1,7 +1,7 @@
 {
   "name": "nao-reinventar-roda",
-  "version": "0.2.0",
-  "description": "Antes de construir: pesquisa demanda, produtos existentes e reuso de código, com fonte e data em cada afirmação, e fecha com um relatório executivo de uma página.",
+  "version": "0.3.0",
+  "description": "Antes de construir: pesquisa demanda, produtos existentes e reuso de código, com fonte e data em cada afirmação, e fecha com um relatório executivo de uma página em HTML e PDF.",
   "author": {
     "name": "Felipe Freitas"
   },
